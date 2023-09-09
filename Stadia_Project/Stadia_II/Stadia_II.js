@@ -1,9 +1,27 @@
+//Constants (for gradient polygon below)
+const Y_AXIS = 1;
+const X_AXIS = 2;
+let c1, c2;
+
 function setup() {
   createCanvas(798, 650);
   background(239, 219, 210);
+//more setup for gradient
+  c1 = color(239, 219, 210);
+  c2 = color(208, 130, 130);
+  
+  noLoop();
 }
 
 function draw() {
+  beginShape();
+  noStroke();
+  vertex(388, 264);
+  vertex(798, 307);
+  vertex(798, 431);
+  vertex(334, 394);
+  endShape(CLOSE);
+  
   //background top white polygon
   fill(241, 255, 254);
   noStroke();
@@ -14,9 +32,13 @@ function draw() {
   vertex(311, 126);
   endShape(CLOSE);
   
+  //pink gradient polygon (heavily referenced from p5js entry on lerpColor)
+  setGradient(333, 265, 465, 170, c1, c2, Y_AXIS);
+  
   //background light blue polygons
   fill(210, 215, 219);
   beginShape();
+  noStroke();
   vertex(372, 216);
   vertex(410, 270);
   vertex(782, 310);
@@ -25,12 +47,23 @@ function draw() {
   
   fill(213, 230, 222);
   beginShape();
+  noStroke();
   vertex(310, 122);
   vertex(368, 211);
   vertex(459, 165);
   vertex(798, 180);
   vertex(798, 0);
   vertex(625, 0);
+  endShape(CLOSE);
+  
+  //polygon to cover bottom edge of gradient
+  beginShape();
+  noStroke();
+  fill(239, 219, 210);
+  vertex(334, 389);
+  vertex(798, 430);
+  vertex(798, 447);
+  vertex(307, 460);
   endShape(CLOSE);
   
   beginShape();
@@ -144,6 +177,18 @@ function draw() {
   vertex(798, 515);
   vertex(798, 539);
   endShape(CLOSE);
+
+}
+//Part of gradient section. Copied from p5js example, then edited.
+function setGradient(x, y, w, h, c1, c2, axis) {
+  noFill();
   
-  
+  if (axis === Y_AXIS) {
+    for (let i = y; i <= y +h; i++) {
+      let inter = map(i - 90, y, y + h, 0, 1);
+      let c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(x, i, x + w, i);
+    }
+  }
 }
