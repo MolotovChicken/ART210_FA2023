@@ -117,10 +117,125 @@ function draw() {
   endShape(CLOSE);
   
   //background grey-ish hatching
-  stroke(186, 166, 157);
-  strokeWeight(3);
+  stroke(180, 160, 151);
+  strokeWeight(4);
   line(321, 16, 318, 38);
-  line(316, 119, 365, 137);
+  line(318, 121, 365, 137);
+  line(372, 99, 682, 250);
+  line(498, 182, 644, 239);
+  line(391, 216, 445, 188);
+  line(778, 0, 762, 128);
+  line(573, 73, 607, 87);
+  line(645, 0, 645, 14);
+  line(670, 114, 798, 179);
+  line(458, 225, 785, 114);
+  line(379, 384, 559, 288);
+  line(409, 339, 539, 413);
+  line(539, 413, 558, 411);
+  line(558, 411, 601, 432);
+  line(601, 432, 770, 481);
+  line(363, 406, 410, 413);
+  line(419, 415, 456, 423);
+  line(493, 429, 595, 462);
+  line(444, 502, 456, 521);
+  line(519, 503, 517, 553);
+  line(408, 526, 333, 556);
+  line(290, 573, 232, 596);
+  line(316, 508, 310, 553);
+  line(306, 576, 300, 613);
+  line(232, 611, 258, 613);
+  line(289, 624, 319, 631);
+  line(682, 624, 722, 649);
+  line(722, 652, 686, 649);
+  line(466, 649, 496, 650);
+  line(576, 615, 582, 638);
+  line(582, 638, 600, 648);
+  strokeWeight(2);
+  line(540, 414,716, 523);
+  line(490, 502, 572, 553);
+  line(290, 511, 316, 508);
+  stroke(120);
+  line(716, 523, 797, 581);
+  
+  //maroon strokes and shapes
+  noStroke();
+  fill(76, 33, 20);
+  beginShape();
+  vertex(676, 419);
+  vertex(677, 412);
+  vertex(729, 423);
+  vertex(798, 442);
+  vertex(798, 451);
+  vertex(727, 430);
+  endShape(CLOSE);
+  beginShape();
+  vertex(590, 536);
+  vertex(630, 542);
+  vertex(595, 542);
+  endShape(CLOSE);
+  beginShape();
+  vertex(498, 496);
+  vertex(490, 503);
+  vertex(529, 503);
+  vertex(609, 515);
+  vertex(644, 523);
+  vertex(702, 536);
+  vertex(713, 535);
+  vertex(747, 548);
+  vertex(749, 541);
+  vertex(715, 528);
+  vertex(707, 531);
+  vertex(610, 509);
+  vertex(531, 501);
+  endShape(CLOSE);
+  beginShape();
+  vertex(348, 426);
+  vertex(352, 420);
+  vertex(409, 430);
+  vertex(409, 432);
+  vertex(405, 436);
+  endShape(CLOSE);
+  beginShape();
+  vertex(510, 460);
+  vertex(536, 465);
+  vertex(559, 477);
+  vertex(668, 508);
+  vertex(554, 481);
+  vertex(543, 474);
+  vertex(509, 465);
+  endShape(CLOSE);
+  beginShape();
+  vertex(471, 502);
+  vertex(480, 504);
+  vertex(494, 534);
+  vertex(532, 574);
+  vertex(573, 628);
+  vertex(580, 627);
+  vertex(589, 641);
+  vertex(569, 631);
+  vertex(510, 561);
+  vertex(488, 535);
+  endShape(CLOSE);
+  beginShape();
+  vertex(0, 614);
+  vertex(0, 623);
+  vertex(63, 650);
+  vertex(79, 650);
+  endShape(CLOSE);
+  
+  //lines overlayed on orange polygon
+  stroke(189, 61, 7);
+  strokeWeight(2);
+  line(0, 351, 350, 424);
+  strokeWeight(1);
+  line(121, 521, 373, 385);
+  
+  
+  //small grey circles
+  noStroke();
+  fill(180, 160, 151);
+  circle(646, 242, 10);
+  circle(537, 322, 10);
   
   //blueish purple upward arcs left side
   noFill();
