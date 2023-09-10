@@ -56,6 +56,12 @@ function draw() {
   vertex(625, 0);
   endShape(CLOSE);
   
+  beginShape();
+  vertex(216, 0);
+  vertex(269, 59);
+  vertex(415, 0);
+  endShape(CLOSE);
+  
   //polygon to cover bottom edge of gradient
   beginShape();
   noStroke();
@@ -66,13 +72,31 @@ function draw() {
   vertex(307, 460);
   endShape(CLOSE);
   
+  //bottom right yellow polygon
+  fill(247, 244, 229);
   beginShape();
-  vertex(216, 0);
-  vertex(269, 59);
-  vertex(415, 0);
+  vertex(447, 650);
+  vertex(798, 573);
+  vertex(798, 650);
   endShape(CLOSE);
   
-   //background bottom white polygon
+  //bottom maroon line
+  stroke(76, 33, 20);
+  strokeWeight(20);
+  line(798, 627, 619, 605);
+  line(481, 587, 240, 555);
+  
+  //lilac polygon
+  fill(150, 147, 202);
+  beginShape();
+  noStroke();
+  vertex(715, 482);
+  vertex(798, 482);
+  vertex(798, 592);
+  vertex(717, 589);
+  endShape(CLOSE);
+  
+  //background bottom white polygon
   fill(239, 240, 245);
   beginShape();
   vertex(196, 638);
@@ -82,30 +106,29 @@ function draw() {
   vertex(187, 650);
   endShape(CLOSE);
   
-  //lilac polygon
-  fill(150, 147, 202);
-  beginShape();
-  vertex(715, 482);
-  vertex(798, 482);
-  vertex(798, 582);
-  vertex(762, 580);
-  vertex(717, 571);
-  endShape(CLOSE);
-  
   //orange polygon
   fill(243, 110, 43);
   beginShape();
   vertex(0, 0);
   vertex(235, 0);
-  vertex(431, 303);
+  vertex(434, 301);
   vertex(194, 650);
   vertex(0, 650);
+  endShape(CLOSE);
+  
+  //"maroon" line overlay on orange polygon
+  fill(174, 82, 36);
+  beginShape();
+  vertex(0, 516);
+  vertex(0, 536);
+  vertex(252, 566);
+  vertex(264, 548);
   endShape(CLOSE);
   
   //top dark blue circles
   fill(16, 89, 168);
   circle(-26, 178, 83);
-  circle(648, 80, 85);
+  circle(648, 80, 90);
   
   //light orange circles
   //bottom row
@@ -177,15 +200,22 @@ function draw() {
   vertex(798, 515);
   vertex(798, 539);
   endShape(CLOSE);
+  
+  //reddish "starburst"
+  stroke(207, 160, 157);
+  noFill();
+  strokeWeight(3);
+  curve(631, 625, 607, 622, 597, 605);
 
 }
-//Part of gradient section. Copied from p5js example, then edited.
+//Part of gradient section. COPIED from p5js example, then edited.
+//Link here: https://p5js.org/examples/color-linear-gradient.html
 function setGradient(x, y, w, h, c1, c2, axis) {
   noFill();
   
   if (axis === Y_AXIS) {
     for (let i = y; i <= y +h; i++) {
-      let inter = map(i - 90, y, y + h, 0, 1);
+      let inter = map(i - 80, y, y + h, 0, 1);
       let c = lerpColor(c1, c2, inter);
       stroke(c);
       line(x, i, x + w, i);
