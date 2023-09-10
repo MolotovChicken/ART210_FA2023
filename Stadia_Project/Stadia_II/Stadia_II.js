@@ -202,10 +202,56 @@ function draw() {
   endShape(CLOSE);
   
   //reddish "starburst"
-  stroke(207, 160, 157);
+  stroke(215, 160, 157);
   noFill();
-  strokeWeight(3);
-  curve(631, 625, 607, 622, 597, 605);
+  strokeWeight(4);
+  line(625, 626, 611, 625);
+  line(611, 625, 601, 615);
+  line(601, 615, 597, 606);
+  line(632, 618, 624, 606);
+  line(626, 592, 637, 579);
+  line(640, 620, 646, 604);
+  line(646, 604, 664, 602);
+  line(649, 629, 659, 642);
+  line(637, 632, 624, 649);
+  line(624, 649, 603, 649);
+  
+  //yellow blob
+  //This code is kinda clunky/long, but it was the quickest way I could find
+  fill(255, 200, 11);
+  stroke(255, 200, 11);
+  beginShape(325, 469);
+  curveVertex(326, 466);
+  curveVertex(326, 466);
+  curveVertex(359, 449);
+  curveVertex(389, 441);
+  curveVertex(437, 426);
+  curveVertex(473, 425);
+  curveVertex(498, 433);
+  curveVertex(512, 458);
+  curveVertex(508, 487);
+  curveVertex(491, 500);
+  curveVertex(458, 500);
+  curveVertex(420, 505);
+  curveVertex(389, 519);
+  curveVertex(364, 529);
+  curveVertex(343, 529);
+  curveVertex(330, 525);
+  curveVertex(320, 510);
+  curveVertex(313, 496);
+  curveVertex(314, 479);
+  curveVertex(320, 472);
+  curveVertex(320, 472);
+  curveVertex(326, 466);
+  curveVertex(326, 466);
+  endShape();
+  
+  //top arranged blue curve
+  noFill();
+  stroke(42, 66, 97);
+  strokeWeight(8);
+  curve(-20, 40, 0, 89, 435, 171, 455, 161);
+  curve(395, 111, 435, 171, 798, 200, 810, 180);
 
 }
 //Part of gradient section. COPIED from p5js example, then edited.
