@@ -116,8 +116,26 @@ function draw() {
   vertex(0, 650);
   endShape(CLOSE);
   
+  //background grey-ish hatching
+  stroke(186, 166, 157);
+  strokeWeight(3);
+  line(321, 16, 318, 38);
+  line(316, 119, 365, 137);
+  
+  //blueish purple upward arcs left side
+  noFill();
+  stroke(111, 47, 108);
+  strokeWeight(8);
+  line(0, 50, 208, 3);
+  curve(-100, 400, 0, 276, 371, 170, 400, 230);
+  curve(-200, 600, 0, 473, 122, 421, 320, 460);
+  //blue arc
+  stroke(85, 85, 182);
+  curve(-100, 480, 0, 423, 109, 397, 200, 420);
+  
   //"maroon" line overlay on orange polygon
   fill(174, 82, 36);
+  noStroke();
   beginShape();
   vertex(0, 516);
   vertex(0, 536);
@@ -250,7 +268,7 @@ function draw() {
   noFill();
   stroke(42, 66, 97);
   strokeWeight(8);
-  curve(-20, 40, 0, 89, 435, 171, 455, 161);
+  curve(-20, 5, 0, 89, 435, 171, 455, 161);
   curve(395, 111, 435, 171, 798, 200, 810, 180);
 
 }
