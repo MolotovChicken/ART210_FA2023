@@ -121,7 +121,10 @@ function draw() {
   strokeWeight(4);
   line(321, 16, 318, 38);
   line(318, 121, 365, 137);
-  line(372, 99, 682, 250);
+  line(457, 143, 682, 250);
+  stroke(178, 186, 171);
+  line(374, 100 ,457, 143);
+  stroke(180, 160, 151);
   line(498, 182, 644, 239);
   line(391, 216, 445, 188);
   line(778, 0, 762, 128);
@@ -226,10 +229,29 @@ function draw() {
   //lines overlayed on orange polygon
   stroke(189, 61, 7);
   strokeWeight(2);
-  line(0, 351, 350, 424);
+  line(0, 351, 248, 398);
+  line(248, 398, 350, 424);
   strokeWeight(1);
-  line(121, 521, 373, 385);
-  
+  line(112, 514, 378, 384);
+  line(12, 471, 185, 545);
+  line(6, 517, 290, 511);
+  line(230, 596, 84, 650);
+  line(126, 376, 320, 261);
+  line(107, 354, 349, 267);
+  line(229, 253, 408, 337);
+  line(106, 252, 106, 355);
+  line(130, 320, 306, 412);
+  line(269, 140, 315, 120);
+  strokeWeight(0.5);
+  line(0, 232, 413, 269);
+  line(80, 400, 0, 456);
+  line(8, 154, 69, 110);
+  line(6, 87, 154, 44);
+  line(26, 0, 81, 65);
+  line(0, 26, 197, 85);
+  line(169, 32, 197, 76);
+  line(328, 420, 328, 453);
+  line(235, 375, 268, 352);
   
   //small grey circles
   noStroke();
@@ -378,6 +400,15 @@ function draw() {
   curveVertex(326, 466);
   curveVertex(326, 466);
   endShape();
+  
+  //small bottom left pink triangle
+  fill(234, 200, 210);
+  noStroke();
+  beginShape();
+  vertex(334, 557);
+  vertex(411, 526);
+  vertex(412, 567);
+  endShape(CLOSE);
   
   //top arranged blue curve
   noFill();
