@@ -123,3 +123,27 @@ function draw() {
     drawGhost(ghost);
   }
 }
+
+function mousePressed() {
+  let ghost = {
+    x: mouseX, 
+    y: mouseY,
+    size: random(50, 100), 
+    type: random(1) < 0.5 ? 'ghost' : 'ghoul',
+    angle: 0
+  };
+  ghosts.push(ghost);
+}
+
+function drawGhost(ghost) {
+  push();
+  translate(ghost.x, ghost.y);
+  rotate(ghost.angle);
+  imageMode(CENTER);
+  if (ghost.type === 'ghost') {
+    image(ghostImg, 0, 0, ghost.size, ghost.size);
+  } else {
+    image(ghoulImg, 0, 0, ghost.size, ghost.size);
+  }
+  pop();
+}
