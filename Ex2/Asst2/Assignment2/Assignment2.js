@@ -89,7 +89,8 @@ function draw() {
   vertex(320, 380);
   endShape(CLOSE);
   circle(400, 110, 25);
-  circle(700, 80, 60);
+  circle(700, 80, 70);
+  
   
   fill(45);
   beginShape();
@@ -98,6 +99,9 @@ function draw() {
   vertex(390, 575);
   vertex(330, 575);
   endShape(CLOSE);
+ 
+  fill(0);
+  circle(380, 520, 10);
   
   noFill();
   
