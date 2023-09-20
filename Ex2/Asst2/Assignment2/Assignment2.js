@@ -11,6 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(800, 600);
+  imageMode(CENTER);
 }
 
 function draw() {
@@ -122,9 +123,6 @@ function draw() {
     ghost.angle += 0.02;
     drawGhost(ghost);
   }
-  for (let ghost of ghosts) {
-    ghost.scale += 0.01;
-    }
 }
 
 function mousePressed() {
@@ -133,10 +131,8 @@ function mousePressed() {
     y: mouseY,
     size: random(50, 100), 
     type: random(1) < 0.5 ? 'ghost' : 'ghoul',
-    angle: 0,
-    scale: 0
+    angle: 0
   };
-  
   ghosts.push(ghost);
 }
 
@@ -144,7 +140,6 @@ function drawGhost(ghost) {
   push();
   translate(ghost.x, ghost.y);
   rotate(ghost.angle);
-  scale(ghost.scale);
   imageMode(CENTER);
   if (ghost.type === 'ghost') {
     image(ghostImg, 0, 0, ghost.size, ghost.size);
