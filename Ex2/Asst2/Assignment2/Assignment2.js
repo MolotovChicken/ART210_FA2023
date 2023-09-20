@@ -3,10 +3,12 @@ let ghosts = [];
 
 let ghostImg;
 let ghoulImg;
+let wolfImg;
 
 function preload() {
    ghostImg = loadImage('data/ghost.png');
    ghoulImg = loadImage('data/ghoul.png');
+   wolfImg = loadImage('data/wolf.png');
 }
 
 function setup() {
@@ -92,6 +94,9 @@ function draw() {
   circle(400, 110, 25);
   circle(700, 80, 70);
   
+  fill(40, 40, 130);
+  circle(680, 85, 50);
+  
   
   fill(45);
   beginShape();
@@ -120,18 +125,26 @@ function draw() {
   noStroke();
   
   for (let ghost of ghosts) {
-    ghost.angle += 0.02;
+    ghost.angle += random(0.02, 0.05);
+    drawGhost(ghost);
+  }
+  for (let ghost of ghosts) {
+    ghost.scale += 0.01;
     drawGhost(ghost);
   }
 }
 
 function mousePressed() {
+  //making an array for type to reference below so I can have three ghosties
+  let kind = ['ghost', 'ghoul', 'wolf'];
+  
   let ghost = {
     x: mouseX, 
     y: mouseY,
-    size: random(50, 100), 
-    type: random(1) < 0.5 ? 'ghost' : 'ghoul',
-    angle: 0
+    size: random(50, 150), 
+    type: random(kind),
+    angle: 0,
+    scale: 0
   };
   ghosts.push(ghost);
 }
@@ -140,11 +153,24 @@ function drawGhost(ghost) {
   push();
   translate(ghost.x, ghost.y);
   rotate(ghost.angle);
+  
+  //THIS IS WHAT I FIGURED OUT to get the ghosts to zoom in and then stop
+  //Your example worked too, but I couldn't get it to draw both 'ghost' and 'ghoul', so I came back in here and futzed around
+  if (ghost.scale <= 1) {
+    scale(ghost.scale);
+  } else {
+    scale(1);
+  }
+ 
   imageMode(CENTER);
+  
+  //more on how I got three kinds of ghosts: nested if-else
   if (ghost.type === 'ghost') {
     image(ghostImg, 0, 0, ghost.size, ghost.size);
-  } else {
+  } else if (ghost.type === 'ghoul') {
     image(ghoulImg, 0, 0, ghost.size, ghost.size);
+  } else {
+    image(wolfImg, 0, 0, ghost.size, ghost.size);
   }
   pop();
 }
