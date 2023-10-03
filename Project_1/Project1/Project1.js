@@ -5,16 +5,29 @@ let state = 0;
 let x;
 let y;
 
+//variables for 10print in state 1
+//heavily referenced from Colby repo sketch_10Print
+let a = 0;
+let b = 0;
+let spacing = 60;
 
-let colBrown, colMedGreen, colBeige, colBrick, colBone, colMoss, colTan, colPurple, colMossHigh;
+function preload() {
+  //add images here
+}
 
 function setup() {
   createCanvas(1920, 1080);
   background(230);
   
   //dreamButton
+  
+  //let drTextCol = color(76, 67, 24);
+  //let drBackCol = color(165, 116, 75);
   dreamButton = createButton('Dream');
   dreamButton.position(1200, 400);
+  //dreamButton.style('font-size', '24px');
+  //dreamButton.style('color', drTextCol);
+  //dreamButton.style('background-color', drBackCol);
   dreamButton.mousePressed(nextPage);
   
   //wakeButton
@@ -24,7 +37,7 @@ function setup() {
   
   //restartButton
   restartButton = createButton('Refresh Page to Restart');
-  restartButton.position(930, 510);
+  restartButton.position(1650, 1020);
   //restartButton.mousePressed(nextPage);
   
   //declare varibles for squigglies
@@ -38,10 +51,15 @@ function draw() {
     wakeButton.hide();
     restartButton.hide();
     
-    //ADD TEXT HERE QUOTE
-    //fill(255, 0, 0);
-    //textSize(24);
-    //text('Hovering over Image', img.width/2, img.height/2);
+    //quote for state 0
+    fill(100);
+    textSize(24);
+    text("And when thou art weary, I'll find thee a bed,", width/2, height/2);
+    text("Of mosses, and flowers, to pillow thy head.", width/2, 580);
+    textSize(18);
+    text("-'To Emma' (1815) by John Keats", 1150, 620);
+    
+    //LOAD IN IMAGE OF PERSON ASLEEP
     
     
     
@@ -50,7 +68,26 @@ function draw() {
     wakeButton.show();
     restartButton.hide();
     
-    //random squigglies (I put this here since I only want it to run while in state 1
+    //10step background from Colby example
+    stroke(random(255));
+    strokeWeight(3);
+    
+    //angle
+    if (random(1) < 0.5) {
+      line(a, b, a + spacing, b + spacing);
+    } else {
+      line(a, b + spacing, a + spacing, b);
+    }
+
+    a += spacing;
+    if (a > width) {
+      a = 0;
+      b += spacing;
+    }
+    //end 10step
+  
+    
+    //random squigglies (I put this here since I only want it to run while in state 1)
     for (let i = 0; i <1000; i++) {
       frameRate(24);
       step();
@@ -60,6 +97,17 @@ function draw() {
     dreamButton.hide();
     wakeButton.hide();
     restartButton.show();
+    
+    fill(255);
+    textSize(24);
+    text("From my rotting body, flowers shall grow", width/2, height/2);
+    text("and I am in them and that is eternity.", width/2, 580);
+    textSize(18);
+    text("-Edvard Munch (1863-1944)", 1130, 620);
+    
+    //LOAD IN IMAGE OF SKELETON IN FOREST
+    //Perhaps build on ghost array idea/function to have
+    //interactivity with mouse clicks spawning flowers/mushrooms
   }
 }
 
@@ -80,8 +128,8 @@ function nextPage() {
 
 // draws the squigglies on a 540 frameCount loop
 function step() {  
- x += random(-2, 2);
- y += random(-2, 2);
+ x += random(-5, 5);
+ y += random(-5, 5);
  
  x = constrain(x, 0, width);
  y = constrain(y, 0, height);
@@ -123,7 +171,8 @@ if (frC <= 60) {
    fill(colMossHigh);
  } 
  
- stroke(0);
+ //makes stroke a random shade of dark grey
+ stroke(random(0, 150));
  strokeWeight(1);
  ellipse(x, y, 30, 30);
  
