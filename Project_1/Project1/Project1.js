@@ -1,7 +1,7 @@
 let dreamButton, wakeButton, restartButton;
 let state = 0;
 
-//variables for squigglies, heavily referenced from https://happycoding.io/tutorials/p5js/animation/random-walker
+//variables for squigglies, heavily referenced from 'https://happycoding.io/tutorials/p5js/animation/random-walker'
 let x;
 let y;
 
@@ -23,7 +23,7 @@ let fungiImg;
 //let skeletonBg;
 
 function preload() {
-  //replace these with my own drawings, also PRELOAD the sleeper and skeleton
+  //replace these with my own drawings
   flowerImg = loadImage('data/flower.png');
   mossImg = loadImage('data/moss.png');
   fungiImg = loadImage('data/fungi.png');
@@ -59,7 +59,7 @@ function setup() {
   restartButton.style('color', color(255));
   restartButton.style('border', 0);
   
-  //declare variables for squigglies
+  //declare variables for squigglies, sets starting point as the canvas' center
   x = width / 2;
   y = height / 2;
 }
@@ -78,7 +78,7 @@ function draw() {
     textSize(18);
     text("-'To Emma' (1815) by John Keats", 1150, 620);
     
-    //LOAD IN IMAGE OF PERSON ASLEEP
+    //LOAD IN IMAGE OF PERSON ASLEEP, see textimage example for reference
     
   } else if (state === 1) {
     dreamButton.hide();
@@ -123,7 +123,7 @@ function draw() {
     textSize(18);
     text("-Edvard Munch (1863-1944)", 1130, 620);
     
-    //part of rendering the flora, initally used by me in Ex.1 for ghosts
+    //part of rendering the flora, initally from spinning flowers activity in class
     for (let flora of floras) {
       flora.scale = 0;
       drawFlora(flora);
@@ -187,9 +187,6 @@ function step() {
  x = constrain(x, 0, width);
  y = constrain(y, 0, height);
  
-
-//let colors = [colBrown, colMedGreen, colBeige, colBrick, colBone, colMoss, colTan, colPurple, colMossHigh];
-//let colors = [color(69, 39, 1), color(148, 155, 87), color(165, 116, 75), color(133, 50, 0), color(189, 175, 148), color(76, 67, 24), color(180, 148, 125), color(59, 36, 44), color(132, 124, 39)];
 
 let colBrown = (color(69, 39, 1));
 let colMedGreen = (color(148, 155, 87));
