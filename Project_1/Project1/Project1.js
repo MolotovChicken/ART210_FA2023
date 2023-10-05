@@ -11,36 +11,55 @@ let a = 0;
 let b = 0;
 let spacing = 60;
 
+//array to store flora, similar premise and use to the ghost array from Exercise 1
+let floras = [];
+//assorted flora
+let flowerImg;
+let mossImg;
+let fungiImg;
+
+//variables for background images in state 0 and 2
+//let sleepBg;
+//let skeletonBg;
+
 function preload() {
-  //add images here
+  //replace these with my own drawings, also PRELOAD the sleeper and skeleton
+  flowerImg = loadImage('data/flower.png');
+  mossImg = loadImage('data/moss.png');
+  fungiImg = loadImage('data/fungi.png');
+  
+  //sleepBg = loadImage('data/sleep.???');
+  //skeletonBg = loadImage('data/skeleton.???');
 }
 
 function setup() {
   createCanvas(1920, 1080);
   background(230);
+  imageMode(CENTER);
   
   //dreamButton
-  
-  //let drTextCol = color(76, 67, 24);
-  //let drBackCol = color(165, 116, 75);
   dreamButton = createButton('Dream');
   dreamButton.position(1200, 400);
-  //dreamButton.style('font-size', '24px');
-  //dreamButton.style('color', drTextCol);
-  //dreamButton.style('background-color', drBackCol);
+  dreamButton.style('background-color', color(250));
+  dreamButton.style('border', 0);
   dreamButton.mousePressed(nextPage);
   
   //wakeButton
   wakeButton = createButton('Wake Up');
-  wakeButton.position(1800, 1040);
+  wakeButton.position(1820, 1040);
+  wakeButton.style('background-color', color(96, 87, 44));
+  wakeButton.style('border', 0);
   wakeButton.mousePressed(nextPage);
   
   //restartButton
+  //less of a functional button and more of a way to easily have text that remains above flora
   restartButton = createButton('Refresh Page to Restart');
-  restartButton.position(1650, 1020);
-  //restartButton.mousePressed(nextPage);
+  restartButton.position(5, 1050);
+  restartButton.style('background-color', color(100));
+  restartButton.style('color', color(255));
+  restartButton.style('border', 0);
   
-  //declare varibles for squigglies
+  //declare variables for squigglies
   x = width / 2;
   y = height / 2;
 }
@@ -60,8 +79,6 @@ function draw() {
     text("-'To Emma' (1815) by John Keats", 1150, 620);
     
     //LOAD IN IMAGE OF PERSON ASLEEP
-    
-    
     
   } else if (state === 1) {
     dreamButton.hide();
@@ -98,6 +115,7 @@ function draw() {
     wakeButton.hide();
     restartButton.show();
     
+    //quote for state 2
     fill(255);
     textSize(24);
     text("From my rotting body, flowers shall grow", width/2, height/2);
@@ -105,10 +123,45 @@ function draw() {
     textSize(18);
     text("-Edvard Munch (1863-1944)", 1130, 620);
     
+    //part of rendering the flora, initally used by me in Ex.1 for ghosts
+    for (let flora of floras) {
+      flora.scale = 0;
+      drawFlora(flora);
+    }
+    
     //LOAD IN IMAGE OF SKELETON IN FOREST
-    //Perhaps build on ghost array idea/function to have
-    //interactivity with mouse clicks spawning flowers/mushrooms
   }
+}
+
+function mousePressed() {
+  if (state === 2) {
+    let kind = ['flower', 'moss', 'fungi'];
+    
+    let flora = {
+      x: mouseX,
+      y: mouseY,
+      size: random(50, 100),
+      type: random(kind),
+      scale: 0
+    };
+    floras.push(flora);
+  }
+}
+
+function drawFlora(flora) {
+  push();
+  translate(flora.x, flora.y);
+  
+  imageMode(CENTER);
+  
+  if (flora.type === 'flower') {
+    image(flowerImg, 0, 0, flora.size, flora.size);
+  } else if (flora.type === 'moss') {
+    image(mossImg, 0, 0, flora.size, flora.size);
+  } else if (flora.type === 'fungi') {
+    image(fungiImg, 0, 0, flora.size, flora.size);
+  }
+  pop();
 }
 
 // changes the background along with changes in state
@@ -118,7 +171,7 @@ function nextPage() {
   if (state === 0) {
     background(230);
   } else if(state === 1) {
-    background(150);
+    background(76, 67, 24);
   } else if(state === 2) {
     background(100);
   }
@@ -151,6 +204,8 @@ let colMossHigh = (color(132, 124, 39));
 
 let frC = frameCount;
 
+//A bit clunky, but a way to cycle through all the colors repeatedly.
+//I tried an array here, but had no luck...
 if (frC <= 60) {
    fill(colBrown);
  } else if (frC > 60 && frC <= 120) {
