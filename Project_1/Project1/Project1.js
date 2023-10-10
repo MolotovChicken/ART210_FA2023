@@ -19,17 +19,17 @@ let mossImg;
 let fungiImg;
 
 //variables for background images in state 0 and 2
-//let sleepBg;
-//let skeletonBg;
+let sleepBg;
+let skeletonBg;
 
 function preload() {
   //replace these with my own drawings
-  flowerImg = loadImage('data/flower.png');
-  mossImg = loadImage('data/moss.png');
-  fungiImg = loadImage('data/fungi.png');
+  snailImg = loadImage('data/snail.png');
+  mossImg = loadImage('data/mossy.png');
+  fungiImg = loadImage('data/shroom.png');
   
-  //sleepBg = loadImage('data/sleep.???');
-  //skeletonBg = loadImage('data/skeleton.???');
+  sleepBg = loadImage('data/sleep.jpg');
+  skeletonBg = loadImage('data/skelly.jpg');
 }
 
 function setup() {
@@ -70,15 +70,17 @@ function draw() {
     wakeButton.hide();
     restartButton.hide();
     
-    //quote for state 0
-    fill(100);
-    textSize(24);
-    text("And when thou art weary, I'll find thee a bed,", width/2, height/2);
-    text("Of mosses, and flowers, to pillow thy head.", width/2, 580);
-    textSize(18);
-    text("-'To Emma' (1815) by John Keats", 1150, 620);
+    //IMAGE OF PERSON ASLEEP
+    image(sleepBg, 960, 540);
     
-    //LOAD IN IMAGE OF PERSON ASLEEP, see textimage example for reference
+    //quote for state 0
+    fill(250);
+    textSize(24);
+    text("And when thou art weary, I'll find thee a bed,", width/2, 200);
+    text("Of mosses, and flowers, to pillow thy head.", width/2, 250);
+    textSize(18);
+    text("-'To Emma' (1815) by John Keats", 1150, 300);
+    
     
   } else if (state === 1) {
     dreamButton.hide();
@@ -115,32 +117,33 @@ function draw() {
     wakeButton.hide();
     restartButton.show();
     
+    //IMAGE OF SKELETON
+    image(skeletonBg, 960, 540); 
+    
     //quote for state 2
     fill(255);
     textSize(24);
-    text("From my rotting body, flowers shall grow", width/2, height/2);
-    text("and I am in them and that is eternity.", width/2, 580);
+    text("From my rotting body, flowers shall grow", width/2, 200);
+    text("and I am in them and that is eternity.", width/2, 250);
     textSize(18);
-    text("-Edvard Munch (1863-1944)", 1130, 620);
+    text("-Edvard Munch (1863-1944)", 1130, 300);
     
     //part of rendering the flora, initally from spinning flowers activity in class
     for (let flora of floras) {
       flora.scale = 0;
       drawFlora(flora);
     }
-    
-    //LOAD IN IMAGE OF SKELETON IN FOREST
   }
 }
 
 function mousePressed() {
-  if (state === 2) {
-    let kind = ['flower', 'moss', 'fungi'];
+  if (state === 2 & mouseY > height/2) {
+    let kind = ['snail', 'moss', 'fungi'];
     
     let flora = {
       x: mouseX,
       y: mouseY,
-      size: random(50, 100),
+      size: random(100, 200),
       type: random(kind),
       scale: 0
     };
@@ -154,12 +157,12 @@ function drawFlora(flora) {
   
   imageMode(CENTER);
   
-  if (flora.type === 'flower') {
-    image(flowerImg, 0, 0, flora.size, flora.size);
+  if (flora.type === 'snail') {
+    image(snailImg, 0, 0, flora.size * 2, flora.size);
   } else if (flora.type === 'moss') {
-    image(mossImg, 0, 0, flora.size, flora.size);
+    image(mossImg, 0, 0, flora.size * 2, flora.size);
   } else if (flora.type === 'fungi') {
-    image(fungiImg, 0, 0, flora.size, flora.size);
+    image(fungiImg, 0, 0, flora.size * 2, flora.size);
   }
   pop();
 }
