@@ -17,7 +17,7 @@ let anchAYStep = 2;
 
 let bubX = 50;
 let bubY = 750;
-let bubStep = -2;
+let bubStep = -1;
 let bubOp = 0;
 let bubOpStep = 2;
 
