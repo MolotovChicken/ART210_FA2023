@@ -1,3 +1,5 @@
+//Loren Halmick, ART 210 FA23, Whale Fall Themed Aquarium for in-class project
+
 //BEZIER one variables
 let x = 150; //controlA x cooridinate
 let y = 150; //controlA y coordinate
@@ -35,9 +37,9 @@ let anch2YStep = 0.2;
 let bubXa = 50;
 let bubXb = 400;
 let bubXc = 1230;
-let bubY = 750;
-let bubYb = 750;
-let bubYc = 750;
+let bubY = 820;
+let bubYb = 820;
+let bubYc = 820;
 let bubStep = -0.5;
 
 //particle "swarm" array
@@ -153,7 +155,7 @@ function draw() {
   ellipse(bubXa, bubY, 10);
   bubY += bubStep;
   } else {
-    bubY = 750;
+    bubY = 820;
     bubXa += random(-50, 100);
     //edge check, if bubble leaves the screen, reset x value to original position
     if (bubXa < 0 || bubXa > width){
@@ -174,7 +176,7 @@ function draw() {
     bubYb += bubStep;
     
   } else {
-    bubYb = 750;
+    bubYb = 820;
     bubXb += random(-50, 100);
     if (bubXb < 0 || bubXb > width){
       bubXb = 400;
@@ -194,7 +196,7 @@ function draw() {
     ellipse(bubXc, bubYc, 10);
     bubYc += bubStep;
     } else {
-      bubYc = 750;
+      bubYc = 820;
       bubXc += random(-50, 100);
       if (bubXc < 0 || bubXc > width){
         bubXc = 1230;
