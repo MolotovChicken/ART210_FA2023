@@ -18,7 +18,7 @@ function draw() {
     dir = -0.1; //change this (these) values to change how fast it lights up and dims
   }
   if (alpha < 10) {
-    dir = 0.3;
+    dir = 0.1;
   }
 
 
